@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Próxima Fase — sorteio de backlog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">▮▮</span>
+    <div>
+      <h1>Próxima Fase</h1>
+      <p class="tagline">sorteia um jogo do seu backlog pra você parar de rolar a estante</p>
+    </div>
+  </div>
+  <nav class="tabs" id="tabs">
+    <button class="tab-btn active" data-view="sortear">Sortear</button>
+    <button class="tab-btn" data-view="fila">Fila <span class="count" id="count-fila">0</span></button>
+    <button class="tab-btn" data-view="concluidos">Concluídos <span class="count" id="count-concluidos">0</span></button>
+    <button class="tab-btn" data-view="adicionar">+ Adicionar</button>
+    <button class="tab-btn tab-btn-ghost" data-view="config">⚙</button>
+  </nav>
+</header>
+
+<div id="banner" class="banner" hidden></div>
+
+<main>
+
+  <!-- SORTEAR -->
+  <section id="view-sortear" class="view active">
+    <div id="sorteio-vazio" class="empty-state" hidden>
+      <p class="empty-title">Sua fila de sorteio está vazia.</p>
+      <p class="empty-sub">Adicione jogos na aba <strong>+ Adicionar</strong> ou volte jogos concluídos pra fila.</p>
+    </div>
+
+    <div id="sorteio-inicial" class="empty-state">
+      <p class="empty-title">Pronto pra saber o que jogar?</p>
+      <button class="btn btn-primary btn-lg" id="btn-sortear-inicial">🎲 Sortear jogo</button>
+    </div>
+
+    <article id="ticket" class="ticket" hidden>
+      <div class="ticket-catalog">
+        <span class="catalog-num" id="ticket-num">Nº 000</span>
+        <span class="catalog-status" id="ticket-tag">EM ANDAMENTO</span>
+      </div>
+
+      <div class="ticket-body">
+        <div class="ticket-cover">
+          <img id="ticket-capa" src="" alt="">
+        </div>
+
+        <div class="ticket-perforation" aria-hidden="true"></div>
+
+        <div class="ticket-info">
+          <span class="ticket-estilo" id="ticket-estilo"></span>
+          <h2 id="ticket-titulo"></h2>
+          <p id="ticket-descricao"></p>
+          <div id="ticket-video" class="ticket-video"></div>
+
+          <div class="ticket-actions">
+            <button class="btn btn-primary" id="btn-concluir">✓ Marcar como concluído</button>
+            <button class="btn btn-ghost" id="btn-resortear">🎲 Sortear outro</button>
+            <button class="btn btn-ghost" id="btn-editar">✎ Editar</button>
+            <button class="btn btn-danger" id="btn-remover">Remover</button>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- FILA -->
+  <section id="view-fila" class="view">
+    <h2 class="view-title">Fila de sorteio</h2>
+    <div class="grid" id="grid-fila"></div>
+  </section>
+
+  <!-- CONCLUÍDOS -->
+  <section id="view-concluidos" class="view">
+    <h2 class="view-title">Jogos concluídos</h2>
+    <div class="grid" id="grid-concluidos"></div>
+  </section>
+
+  <!-- ADICIONAR / EDITAR -->
+  <section id="view-adicionar" class="view">
+    <h2 class="view-title" id="form-title">Adicionar jogo</h2>
+    <form id="form-jogo" class="form">
+      <input type="hidden" id="f-id">
+
+      <label>Título
+        <input type="text" id="f-titulo" required placeholder="Ex: Hollow Knight">
+      </label>
+
+      <label>Capa (URL da imagem)
+        <input type="url" id="f-capa" required placeholder="https://...">
+      </label>
+
+      <label>Estilo
+        <input type="text" id="f-estilo" placeholder="Ex: Metroidvania, RPG, FPS...">
+      </label>
+
+      <label>Descrição
+        <textarea id="f-descricao" rows="4" placeholder="Do que se trata o jogo?"></textarea>
+      </label>
+
+      <label>Vídeo (link do YouTube ou .mp4)
+        <input type="url" id="f-video" placeholder="https://youtube.com/watch?v=...">
+      </label>
+
+      <div id="f-preview-wrap" class="form-preview" hidden>
+        <span class="preview-label">Pré-visualização</span>
+        <img id="f-preview" src="" alt="">
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary" id="btn-salvar-jogo">Salvar jogo</button>
+        <button type="button" class="btn btn-ghost" id="btn-cancelar-edicao" hidden>Cancelar edição</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- CONFIG -->
+  <section id="view-config" class="view">
+    <h2 class="view-title">Configurações — conexão com o GitHub</h2>
+    <p class="view-sub">Pra salvar mudanças de volta no <code>data/games.json</code> do repositório, o app usa a API do GitHub com um token pessoal. O token fica salvo só no seu navegador (localStorage) — nunca é commitado.</p>
+
+    <form id="form-config" class="form">
+      <label>Usuário/organização do GitHub
+        <input type="text" id="c-owner" placeholder="Ex: jean">
+      </label>
+      <label>Nome do repositório
+        <input type="text" id="c-repo" placeholder="Ex: proxima-fase">
+      </label>
+      <label>Branch
+        <input type="text" id="c-branch" placeholder="main" value="main">
+      </label>
+      <label>Token pessoal (fine-grained, com permissão de leitura/escrita em Contents)
+        <input type="password" id="c-token" placeholder="github_pat_...">
+      </label>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Salvar configuração</button>
+        <button type="button" class="btn btn-ghost" id="btn-testar-conexao">Testar conexão</button>
+      </div>
+    </form>
+    <p class="config-status" id="config-status"></p>
+  </section>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
