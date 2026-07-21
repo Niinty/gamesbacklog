@@ -1,11 +1,11 @@
 [
   {
     "id": "exemplo-1",
-    "titulo": "Hollow Knight",
-    "capa": "https://upload.wikimedia.org/wikipedia/en/0/04/Hollow_Knight_first_cover_art.webp",
-    "estilo": "Metroidvania",
-    "descricao": "Explore um vasto reino subterrâneo em ruínas, enfrente criaturas insetoides e desvende os segredos de Hallownest.",
-    "video": "https://www.youtube.com/watch?v=UAO2urG23S4",
+    "titulo": "Radiata Stories",
+    "capa": "https://upload.wikimedia.org/wikipedia/en/thumb/1/18/Radiata_Stories.jpg/250px-Radiata_Stories.jpg",
+    "estilo": "JRPG",
+    "descricao": "Jogar no emulador do PS2",
+    "video": "https://www.youtube.com/watch?v=tswMdlGIfHo",
     "status": "pendente",
     "adicionadoEm": "2026-01-10T12:00:00.000Z",
     "concluidoEm": null
