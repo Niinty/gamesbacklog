@@ -20,5 +20,16 @@
     "status": "concluido",
     "adicionadoEm": "2025-11-02T12:00:00.000Z",
     "concluidoEm": "2026-02-20T18:30:00.000Z"
+  },
+  {
+    "id": "g-mrup63d2-qhwrz",
+    "titulo": "Mario Kart 8 Deluxe",
+    "capa": "https://m.media-amazon.com/images/I/71C9pOGlKtL._AC_SY741_.jpg",
+    "estilo": "Corrida",
+    "descricao": "Usar o emulador do Switch compatível.",
+    "video": "https://www.youtube.com/watch?v=4DBL1iUeFyA",
+    "status": "pendente",
+    "adicionadoEm": "2026-07-21T13:36:33.158Z",
+    "concluidoEm": null
   }
 ]
