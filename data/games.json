@@ -130,5 +130,16 @@
     "status": "pendente",
     "adicionadoEm": "2026-07-22T10:45:46.122Z",
     "concluidoEm": null
+  },
+  {
+    "id": "g-mrvyo1b3-zcswq",
+    "titulo": "The Incredible Adventures of Van Helsing",
+    "capa": "https://upload.wikimedia.org/wikipedia/en/b/b8/Incredible_Adventures_of_Van_Helsing_cover.jpg",
+    "estilo": "ARPG",
+    "descricao": "STEAM",
+    "video": "https://www.youtube.com/watch?v=MLOkOprxnc4",
+    "status": "pendente",
+    "adicionadoEm": "2026-07-22T10:50:13.024Z",
+    "concluidoEm": null
   }
 ]
