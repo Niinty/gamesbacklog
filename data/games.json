@@ -141,5 +141,16 @@
     "status": "pendente",
     "adicionadoEm": "2026-07-22T10:50:13.024Z",
     "concluidoEm": null
+  },
+  {
+    "id": "g-mrvysl81-gxja3",
+    "titulo": "Mad Max",
+    "capa": "https://upload.wikimedia.org/wikipedia/pt/1/11/Mad_max_capa.jpg",
+    "estilo": "Ação / Aventura",
+    "descricao": "STEAM",
+    "video": "",
+    "status": "pendente",
+    "adicionadoEm": "2026-07-22T10:53:45.457Z",
+    "concluidoEm": null
   }
 ]
